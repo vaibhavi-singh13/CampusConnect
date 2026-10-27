@@ -120,7 +120,7 @@ website, while Render runs the API.
 -   **Backend health check:**
     [https://campusconnect-api-ts7y.onrender.com/api/health](https://campusconnect-api-ts7y.onrender.com/)
 -   **Source code:** [https://github.com/vaibhavi-singh13/CampusConnect](https://github.com/vaibhavi-singh13/CampusConnect/tree/main)
--   **Demo Video:**
+-   **Demo Video:** https://drive.google.com/file/d/1yBfNFUmoq2ZA-DE8pOzkNcoFSYV4ftT7/view?usp=sharing
 
 ## Benefits
 
