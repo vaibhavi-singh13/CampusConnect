@@ -1,0 +1,11 @@
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import api, { getError } from "../api";
+import { useAuth } from "../context/AuthContext";
+import { AuthPage } from "./Login";
+export default function Register() {
+ const [form,setForm]=useState({name:"",email:"",college:"",password:"",confirm:""}); const [error,setError]=useState(""); const [busy,setBusy]=useState(false); const {login}=useAuth(); const navigate=useNavigate();
+ const change=e=>setForm({...form,[e.target.name]:e.target.value});
+ async function submit(e){e.preventDefault();setError("");if(form.password!==form.confirm){setError("Your passwords don't match.");return;}setBusy(true);try{const {data}=await api.post("/auth/register",{name:form.name,email:form.email,college:form.college,password:form.password});login(data);navigate("/feed");}catch(e){setError(getError(e));}finally{setBusy(false);}}
+ return <AuthPage title="Find your people." subtitle="One account gets you closer to the whole campus."><form onSubmit={submit} className="auth-form"><label>Full name<input name="name" value={form.name} onChange={change} placeholder="What should we call you?" minLength="2" required autoComplete="name"/></label><label>College / institution <span className="optional">optional</span><input name="college" value={form.college} onChange={change} placeholder="Your college name"/></label><label>Email address<input type="email" name="email" value={form.email} onChange={change} placeholder="you@college.edu" required autoComplete="email"/></label><label>Password<input type="password" name="password" value={form.password} onChange={change} placeholder="At least 8 characters" minLength="8" required autoComplete="new-password"/></label><label>Confirm password<input type="password" name="confirm" value={form.confirm} onChange={change} placeholder="Type it one more time" required autoComplete="new-password"/></label>{error&&<div className="form-error">{error}</div>}<button className="button primary full" disabled={busy}>{busy?"Creating your account…":"Create my account"}</button><p className="terms-note">By joining, you agree to be kind and respectful to your campus community.</p></form><p className="auth-switch">Already a member? <Link to="/login">Log in</Link></p></AuthPage>;
+}
