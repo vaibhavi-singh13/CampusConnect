@@ -1,66 +1,147 @@
-# CampusConnect
+# CampusConnect 
 
-A college community platform built with React + Vite, Axios, Node.js, Express, MongoDB, and Mongoose.
+## About the Project
 
-## Features included
-- Student registration/login with JWT authentication and hashed passwords
-- Editable student profile (bio, college, branch, year, skills, interests)
-- Community feed with category filters and search
-- Create, edit, delete posts (authors only)
-- Like/unlike posts with duplicate-like prevention
-- Add/view/edit/delete comments (authors only)
-- Academic resource library with search/category filtering and owner-only edit/delete
-- Student discovery by name, skills, interests, branch, and year
-- Responsive interface, loading/error/empty states
-- Pagination for posts and resources
-- API health endpoint and basic security middleware
+CampusConnect is a college community platform designed to help students
+connect, communicate, and share useful information in one place. It
+brings together student discovery, community posts, academic resources,
+and direct messaging in a single website.
 
-This is an educational starter project. Review security, privacy, file storage, and deployment settings before production use.
+## Problem Statement
 
-## Requirements
-- Node.js 18+
-- MongoDB running locally, or a MongoDB Atlas connection string
+College students often receive information through many different
+channels, such as group chats, social media, classroom conversations,
+and separate resource-sharing platforms. Important updates and
+opportunities can get missed, and students may find it difficult to
+discover peers with similar interests or find the resources they need.
 
-## Setup
+CampusConnect addresses this problem by providing a centralized digital
+space for students to interact, share information, and build connections
+within their college community.
 
-### 1. Backend
-```bash
-cd backend
-cp .env.example .env
-# Edit .env and set MONGO_URI and JWT_SECRET
-npm install
-npm run dev
-```
-The API runs at `http://localhost:5000`.
+## Project Goals
 
-### 2. Frontend
-Open another terminal:
-```bash
-cd frontend
-npm install
-npm run dev
-```
-Open the local URL printed by Vite (usually `http://localhost:5173`).
+-   Make it easier for students to discover and connect with other
+    students.
+-   Provide a place to share campus updates and useful posts.
+-   Make academic resources easier to share and find.
+-   Enable direct communication between students.
+-   Offer a comfortable interface with dark mode and larger text.
 
-## Environment
-Backend `.env`:
-- `PORT`: API port (default 5000)
-- `MONGO_URI`: MongoDB connection string
-- `JWT_SECRET`: long random secret
-- `CLIENT_URL`: frontend origin (default http://localhost:5173)
-- `NODE_ENV`: development or production
+## Key Features
 
-Frontend `.env` (optional):
-- `VITE_API_URL`: API base URL (default http://localhost:5000/api)
+### Student Registration and Login
 
-## Notes
-- Create an account through the Register page. No default admin account is created.
-- The app stores resource URLs/links and metadata; it does not upload files to a storage provider.
-- JWT is sent in the Authorization header and kept in localStorage for this learning project. For production, consider HTTP-only secure cookies and a stronger deployment review.
-- API routes and data models are documented in `backend/README.md`.
+Students can create an account and access the platform.
 
+### Student Discovery
 
-## Recent improvements
-- Dark/light mode toggle in the signed-in app header (preference is saved in the browser).
-- Larger text across key student-directory and chat controls.
-- Student-to-student direct messaging from the Find Students cards. Messages are stored in MongoDB and refreshed automatically while the chat is open.
+Students can browse and discover other members of the community, helping
+them connect with peers.
+
+### Student-to-Student Chat
+
+Students can communicate directly with other students through the
+website.
+
+### Community Posts
+
+Students can publish updates and information relevant to their campus
+community.
+
+### Academic Resource Sharing
+
+Students can share and discover study materials and other helpful
+learning resources.
+
+### Dark Mode and Readability
+
+The interface includes a dark mode and a larger-text option to make the
+experience more comfortable and readable.
+
+## Technologies Used
+
+### Frontend
+
+-   **React** --- builds the interactive user interface and reusable
+    page components.
+-   **Vite** --- supports frontend development and creates the
+    production build.
+-   **CSS** --- controls layout, styling, and the visual appearance of
+    the interface.
+-   **Axios** --- sends requests from the frontend to backend APIs and
+    receives their responses.
+
+### Backend
+
+-   **Node.js** --- runs the server-side JavaScript application.
+-   **Express.js** --- defines API routes and handles requests from the
+    frontend.
+-   **MongoDB** --- stores application data such as user information and
+    community content.
+-   **Mongoose** --- helps define data schemas and interact with
+    MongoDB.
+-   **JWT and bcrypt** --- support token-based authentication and
+    password hashing where configured in the application.
+
+### Deployment and Version Control
+
+-   **Vercel** --- hosts the frontend website.
+-   **Render** --- hosts the backend API.
+-   **GitHub** --- stores the project's source code and tracks changes.
+
+## How the Application Works
+
+CampusConnect follows a client-server architecture.
+
+1.  A student interacts with the website through the React interface.
+2.  Axios sends the required HTTP request to the backend.
+3.  Express receives the request and runs the relevant application
+    logic.
+4.  The backend validates the request and uses Mongoose to read or
+    update data in MongoDB when needed.
+5.  The backend sends a response to the frontend, which updates the page
+    for the student.
+
+This structure separates the user interface, application logic, and data
+storage, making the project easier to maintain and extend.
+
+## Project Architecture
+
+**Student → React Frontend → Axios API Request → Express/Node.js Backend
+→ Mongoose → MongoDB**
+
+The frontend and backend are deployed separately: Vercel serves the
+website, while Render runs the API.
+
+## Live Project
+
+-   **Website:** [https://campus-connect-puce-chi.vercel.app/](https://campus-connect-puce-chi.vercel.app/)
+-   **Backend health check:**
+    [https://campusconnect-api-ts7y.onrender.com/api/health](https://campusconnect-api-ts7y.onrender.com/)
+-   **Source code:** [https://github.com/vaibhavi-singh13/CampusConnect](https://github.com/vaibhavi-singh13/CampusConnect/tree/main)
+-   **Demo Video:**
+
+## Benefits
+
+-   Brings several student-community activities together in one place.
+-   Helps students discover peers and communicate with them.
+-   Encourages sharing of useful campus information and academic
+    resources.
+-   Provides a more convenient way to access community content.
+-   Includes interface options intended to improve comfort and
+    readability.
+
+## Future Scope
+
+CampusConnect could be extended with features such as real-time chat,
+notifications, richer student profiles, interest-based communities,
+event listings, and improved resource discovery.
+
+## Conclusion
+
+CampusConnect aims to make college life more connected by giving
+students a shared online space to communicate, discover peers, and
+exchange information. By combining a React frontend, an Express and
+Node.js backend, and MongoDB for data storage, the project provides a
+foundation that can be expanded with additional campus-focused features.
